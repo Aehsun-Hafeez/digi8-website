@@ -345,7 +345,7 @@ p { margin: 0 0 1rem; }
 }
 .hero__dots button:hover { background: #b9b3b3; }
 .hero__dots button.is-active { width: 24px; background: var(--emerald-600); }
-.hero__dots button.is-active.is-green { background: #16a34a; }
+.hero__dots button.is-active.is-green { background: var(--emerald-600); }
 .hero__panel { transition: opacity .4s ease, transform .4s ease; }
 .hero__panel.is-fading { opacity: 0; transform: translateY(8px); }
 .ui-chart.is-green i { background: linear-gradient(#4ade80, #16a34a); }
