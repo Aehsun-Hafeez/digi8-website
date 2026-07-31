@@ -39,6 +39,10 @@
   forms.forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
       var note = form.querySelector(".form-note");
       if (note) {
         note.textContent = "Thank you — your message has been noted. Our team will reach out at connect@digi8.tech shortly.";
