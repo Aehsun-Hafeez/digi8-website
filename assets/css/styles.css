@@ -692,7 +692,9 @@ body.home .hero { margin-top: calc(-1 * var(--header-h)); }
     transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
   }
   .nav.is-open { transform: none; opacity: 1; pointer-events: auto; }
-  .header-cta .btn { display: none; }
+  .header-cta .btn-portal { border-left: none; padding: 8px 6px; font-size: .9rem; }
+  .header-cta { gap: 8px; }
+  .brand__name small { display: none; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
