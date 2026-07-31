@@ -126,6 +126,21 @@ body.home .hero__grid { grid-template-columns: 1.05fr .95fr; align-items: center
   background: linear-gradient(var(--emerald-500), var(--emerald-700)); border-radius: 0 4px 4px 0;
 }
 .about-card > * { position: relative; z-index: 1; }
+/* Core-strength icon chips */
+.strength-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+.strength-chip {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #fff; border: 1px solid var(--line); border-radius: 12px;
+  padding: 9px 16px 9px 10px; box-shadow: var(--shadow-sm);
+  font-weight: 600; font-size: .92rem; color: var(--ink-800);
+  transition: transform .2s ease, box-shadow .25s ease, border-color .2s ease;
+}
+.strength-chip:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--emerald-500); }
+.strength-chip .ic {
+  width: 34px; height: 34px; border-radius: 9px; flex: none; display: grid; place-items: center;
+  background: var(--emerald-50); color: var(--emerald-700);
+}
+.strength-chip .ic svg { width: 18px; height: 18px; }
 .about-card .check-list { columns: 2; column-gap: 40px; }
 .about-card .check-list li { break-inside: avoid; }
 @media (max-width: 760px) {
@@ -668,6 +683,13 @@ body.home .hero { margin-top: calc(-1 * var(--header-h)); }
 .footer-social { display: flex; gap: 10px; margin-top: 8px; }
 .footer-social a { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; background: rgba(255,255,255,.06); color: #cfd6db; }
 .footer-social a:hover { background: var(--emerald-600); color: #fff; }
+
+/* Brand-colored social icons (e.g. Contact page) */
+.footer-social--brand a[aria-label="Facebook"]  { background: #5b9bf5; color: #fff; }
+.footer-social--brand a[aria-label="LinkedIn"]   { background: #4b98da; color: #fff; }
+.footer-social--brand a[aria-label="Instagram"]  { color: #fff;
+  background: radial-gradient(circle at 28% 108%, #fdecac 0%, #fdecac 6%, #fd8b6e 34%, #e879bd 58%, #6f92ef 90%); }
+.footer-social--brand a:hover { color: #fff; transform: translateY(-3px); filter: brightness(1.06); box-shadow: var(--shadow-md); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding: 22px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: .88rem; color: #7e8a91; }
 
 /* ----- Reveal animation ----- */
