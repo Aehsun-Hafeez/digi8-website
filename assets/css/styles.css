@@ -91,6 +91,15 @@ body.home .hero__grid { grid-template-columns: 1.05fr .95fr; align-items: center
 }
 .hero__visual { display: flex; justify-content: center; align-items: center; }
 .hero__float { width: 100%; max-width: 560px; animation: floaty 6s ease-in-out infinite; }
+/* Reusable 3D tilt for hero media (ECL card, PF screenshot, …) */
+.hero-media-3d {
+  transform: perspective(1600px) rotateY(-8deg) rotateX(4deg) rotate(.5deg);
+  transform-origin: center center;
+  transition: transform .7s cubic-bezier(.22,.61,.36,1), box-shadow .7s ease;
+  box-shadow: 0 36px 64px -30px rgba(0,0,0,.5), 0 0 46px rgba(226,35,26,.16);
+}
+.hero-media-3d:hover { transform: perspective(1600px) rotateY(-3deg) rotateX(1deg) rotate(0deg); }
+@media (max-width: 960px) { .hero-media-3d { transform: perspective(1500px) rotateY(-5deg) rotateX(2deg) rotate(.5deg); } }
 .hero__laptop-img {
   width: 100%; height: auto; display: block;
   border-radius: 16px;

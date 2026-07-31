@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=88" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=89" />
   <style>
     /* Product-page specifics (shared red + charcoal theme) */
     .product-hero { position: relative; overflow: hidden; background:
@@ -40,7 +40,7 @@
     .stack span { font-size: .85rem; font-weight: 600; color: var(--ink-700); background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px; box-shadow: var(--shadow-sm); }
   </style>
 </head>
-<body>
+<body class="home">
 
   <div class="topbar">
     <div class="container topbar__inner">
@@ -76,21 +76,23 @@
     </div>
   </header>
 
-  <!-- Product hero -->
-  <section class="product-hero">
-    <div class="container">
-      <span class="eyebrow">Provident Fund Management</span>
-      <p class="audience">For employers · trustees · HR &amp; payroll teams</p>
-      <h1>Run your provident fund <em>without the spreadsheets.</em></h1>
-      <p class="product-hero__lead">End-to-end provident fund administration — member ledgers, contribution tracking, profit allocation, withdrawal &amp; settlement processing, and statutory reporting, all in one compliant platform.</p>
-      <div class="product-hero__actions">
-        <a class="btn btn-primary" href="/contact/index.html">Talk to our PF team</a>
-        <a class="btn btn-outline-light" href="#capabilities">Explore capabilities</a>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Provident Fund Management</span>
+        <h1>Run your provident fund without the spreadsheets</h1>
+        <p class="hero__lead">End-to-end PF administration — member ledgers, contributions, profit allocation, loans and settlement — all in one compliant, self-service platform.</p>
+        <div class="hero__actions">
+          <a class="btn btn-primary" href="#capabilities">Explore capabilities ↓</a>
+          <a class="btn btn-ghost" href="/contact/index.html">Talk to our PF team →</a>
+        </div>
       </div>
-      <div class="product-hero__meta">
-        <div><strong>Member ledgers</strong><span>Per-employee accounting</span></div>
-        <div><strong>Payroll-integrated</strong><span>Automated deductions</span></div>
-        <div><strong>ESS portal</strong><span>24/7 self-service</span></div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__float">
+          <img class="hero-media-3d" src="/assets/img/products/pf2.jpg" alt="Provident Fund dashboard" style="width:100%; border-radius:16px; display:block;" />
+        </div>
       </div>
     </div>
   </section>
@@ -285,6 +287,15 @@
 
   <script src="/assets/js/main.js"></script>
   <!-- WhatsApp floating button -->
+  <script>
+    (function () {
+      var h = document.querySelector(".site-header");
+      if (!h) return;
+      var toggle = function () { h.classList.toggle("is-scrolled", window.scrollY > 8); };
+      toggle();
+      window.addEventListener("scroll", toggle, { passive: true });
+    })();
+  </script>
   <a class="wa-fab" href="https://wa.me/923214639297" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.9c0 2.1.55 4.06 1.6 5.82L2 22l4.42-1.16a9.9 9.9 0 0 0 5.62 1.74h.01c5.46 0 9.9-4.45 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.06c-.25.7-1.44 1.33-2 1.42-.53.08-1.2.11-1.94-.12-.45-.14-1.02-.33-1.76-.65-3.1-1.34-5.12-4.46-5.28-4.67-.15-.2-1.26-1.67-1.26-3.19 0-1.52.8-2.27 1.08-2.58.28-.31.61-.39.82-.39.2 0 .41 0 .59.01.19.01.44-.07.69.53.25.6.86 2.1.94 2.25.08.15.13.33.03.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.36 1.46.3.15.47.13.64-.08.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.72.81 2.01.96.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
   </a>
