@@ -196,6 +196,33 @@ body.home .hero__grid { grid-template-columns: 1.05fr .95fr; align-items: center
 }
 .btn-portal:hover { transform: translateY(-1px); box-shadow: none; background: transparent; }
 
+/* Odoo-logo Client Portal button */
+.btn-portal-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 9px 16px;
+  line-height: 0;
+  box-shadow: 0 8px 22px -12px rgba(0, 0, 0, .45);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn-portal-logo:hover { transform: translateY(-1px); box-shadow: 0 12px 26px -12px rgba(0, 0, 0, .55); }
+.btn-portal-logo img { height: 22px; width: auto; display: block; }
+@media (max-width: 720px) { .btn-portal-logo { padding: 7px 12px; } .btn-portal-logo img { height: 19px; } }
+
+/* Bare odoo logo (no chip / no background) — used on the portal page itself.
+   Uses the transparent white variant so it sits cleanly on the dark header,
+   balanced against the white "digi8" wordmark on the left. */
+.btn-portal-logo--bare { background: transparent; box-shadow: none; padding: 0; opacity: .92; transition: opacity .2s ease, transform .2s ease; }
+.btn-portal-logo--bare:hover { background: transparent; box-shadow: none; opacity: 1; transform: translateY(-1px); }
+.btn-portal-logo--bare img { height: 20px; }
+@media (min-width: 721px) {
+  .header-cta .btn-portal-logo--bare { border-left: 1px solid rgba(255,255,255,.16); padding-left: 20px; }
+}
+@media (max-width: 720px) { .btn-portal-logo--bare img { height: 18px; } }
+
 /* Shimmering text sweep on the Client Portal label */
 .btn-shine {
   background: linear-gradient(to right, #b91c1c 0, #f0726b 10%, #b91c1c 20%);
