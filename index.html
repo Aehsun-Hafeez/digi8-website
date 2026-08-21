@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=93" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=99" />
 </head>
 <body class="home">
 
@@ -67,7 +67,10 @@
 
       <div class="hero__visual" aria-hidden="true">
         <div class="hero__float">
-          <img class="hero__laptop-img" src="/assets/img/hero-opt-code.svg?v=2" alt="Code editor" />
+          <div class="hero-slider">
+            <img class="hero-3d-img hero-3d-img--clear is-active" src="/assets/img/hero-opt1-fit.png?v=1" alt="Digi8 intelligent software platform" />
+            <img class="hero-3d-img hero-3d-img--clear" src="/assets/img/hero-opt4-fit.png?v=1" alt="Digi8 intelligent software platform" />
+          </div>
         </div>
       </div>
     </div>
@@ -359,6 +362,25 @@
     })();
   </script>
   <script src="/assets/js/main.js"></script>
+  <script>
+    // Hero illustration slider (cross-fade between the two images)
+    (function () {
+      var slider = document.querySelector(".hero-slider");
+      if (!slider) return;
+      var imgs = slider.querySelectorAll("img");
+      var dots = document.querySelectorAll(".hero-slider__dots button");
+      var i = 0, timer;
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      function go(n) {
+        i = (n + imgs.length) % imgs.length;
+        Array.prototype.forEach.call(imgs, function (im, k) { im.classList.toggle("is-active", k === i); });
+        Array.prototype.forEach.call(dots, function (d, k) { d.classList.toggle("is-active", k === i); });
+      }
+      function start() { if (reduce) return; clearInterval(timer); timer = setInterval(function () { go(i + 1); }, 4500); }
+      Array.prototype.forEach.call(dots, function (d, k) { d.addEventListener("click", function () { go(k); start(); }); });
+      go(0); start();
+    })();
+  </script>
   <script>
     (function () {
       var el = document.querySelector(".typed-text");

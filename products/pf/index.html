@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=93" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=96" />
   <style>
     /* Product-page specifics (shared red + charcoal theme) */
     .product-hero { position: relative; overflow: hidden; background:
@@ -78,6 +78,22 @@
       .workflow-card { padding: 32px 22px 28px; border-radius: 20px; }
       .workflow-grid { grid-template-columns: 1fr; gap: 14px; }
     }
+
+    /* Portfolio & investment detail — tinted card with white inner panels */
+    .pf-detail-card { margin-top: 44px; background: linear-gradient(160deg, var(--emerald-50), #fff);
+      border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow-lg); padding: 42px 46px; }
+    .pf-detail-card__head { text-align: center; max-width: 720px; margin: 0 auto 30px; }
+    .pf-detail-card__head h2 { margin: 8px 0 0; }
+    .pf-detail-card .split { margin: 0; align-items: stretch; }
+    .pf-detail-card .split > .reveal { background: #fff; border: 1px solid var(--line); border-radius: 16px;
+      padding: 26px 28px; box-shadow: var(--shadow-sm); }
+    .pf-detail-card .split > .reveal h3 { margin-top: 0; }
+    @media (max-width: 820px) { .pf-detail-card { padding: 28px 20px; } }
+
+    /* Title inside the overview lifecycle card */
+    .pf-cycle-head { margin-bottom: 6px; }
+    .pf-cycle-head .eyebrow { display: block; margin-bottom: 6px; }
+    .pf-cycle-head b { display: block; font-family: var(--font-head, "Space Grotesk", sans-serif); font-size: 1.15rem; color: var(--ink-900); line-height: 1.2; }
   </style>
 </head>
 <body class="home">
@@ -142,17 +158,21 @@
     <div class="container split">
       <div class="reveal">
         <span class="eyebrow">Overview</span>
-        <h2>One compliant platform for the entire PF lifecycle</h2>
+        <h2>One intelligent platform for provident fund operations</h2>
         <p class="lead">From the first contribution to the final settlement — automated, accurate and transparent.</p>
         <p>Digi8's Provident Fund Management system replaces fragile spreadsheets and disconnected workpapers with a single governed platform. It maintains member-level accounting, automates profit allocation, processes loans and withdrawals, and generates the statutory reports your trustees and regulators require.</p>
         <ul class="check-list">
           <li>Full automation across the entire PF lifecycle</li>
-          <li>Policy compliance through configurable rules</li>
+          <li>Policy alignment through configurable rules</li>
           <li>Employee self-service portals</li>
           <li>Real-time reporting dashboards</li>
         </ul>
       </div>
       <div class="split__media reveal" aria-hidden="true">
+        <div class="pf-cycle-head">
+          <span class="eyebrow">At a glance</span>
+          <b>The PF cycle</b>
+        </div>
         <div class="metric-row"><span class="dot">in</span><div><b>Contributions</b><small>Employee &amp; employer, every cycle</small></div></div>
         <div class="metric-row"><span class="dot">%</span><div><b>Profit allocation</b><small>Distributed proportionately</small></div></div>
         <div class="metric-row"><span class="dot">out</span><div><b>Settlements</b><small>Automated, with full statement</small></div></div>
@@ -244,8 +264,13 @@
       </div>
       <p class="pf-flow__note reveal">Transparent, policy-compliant profit distribution — building employee trust and regulatory compliance.</p>
 
-      <!-- Portfolio & investment detail -->
-      <div class="split" style="margin-top:56px">
+      <!-- Portfolio & investment detail (card) -->
+      <div class="pf-detail-card reveal">
+        <div class="pf-detail-card__head">
+          <span class="eyebrow">The process</span>
+          <h2>How the platform manages your fund</h2>
+        </div>
+        <div class="split">
         <div class="reveal">
           <h3>Portfolio management</h3>
           <p>Maintain a live view of the fund's holdings across every asset class — bank deposits, government securities, mutual funds, equities and term instruments — each governed by your approved investment guidelines, with cost, current value, maturity and yield captured for every position. Record buy and sell transactions, accruals and realised gains, and monitor the portfolio's overall return, exposure and liquidity from a single dashboard.</p>
@@ -265,6 +290,7 @@
             <li>Annual profit calculated on the total fund from returns</li>
             <li>Profit distributed proportionately by accumulated balance</li>
           </ul>
+        </div>
         </div>
       </div>
     </div>

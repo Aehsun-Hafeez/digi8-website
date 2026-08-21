@@ -110,10 +110,45 @@ body.home .hero__grid { grid-template-columns: 1.05fr .95fr; align-items: center
   will-change: transform;
 }
 .hero__laptop-img:hover { transform: perspective(1500px) rotateY(-6deg) rotateX(2deg) rotate(0deg); }
+
+/* Home hero 3D illustration — dark JPG blended into the dark hero via an edge-fade mask */
+.hero-3d-img {
+  width: 100%; height: auto; display: block;
+  -webkit-mask-image: radial-gradient(132% 128% at 52% 46%, #000 60%, transparent 90%);
+          mask-image: radial-gradient(132% 128% at 52% 46%, #000 60%, transparent 90%);
+  filter: drop-shadow(0 40px 70px rgba(0,0,0,.6)) drop-shadow(0 0 60px rgba(226,35,26,.24));
+  transform: perspective(1100px) rotateY(-22deg) rotateX(10deg) rotate(1.5deg);
+  transform-origin: center center;
+  transition: transform .8s cubic-bezier(.22,.61,.36,1), filter .8s ease;
+  will-change: transform;
+}
+.hero-3d-img:hover { transform: perspective(1100px) rotateY(-8deg) rotateX(3deg) rotate(0deg); }
+
+/* Transparent illustration on the dark hero — no mask needed; gentle tilt + red glow */
+.hero-3d-img--clear {
+  -webkit-mask-image: none; mask-image: none;
+  transform: perspective(1600px) rotateY(-9deg) rotateX(4deg) rotate(.5deg);
+  filter: drop-shadow(0 34px 60px rgba(0,0,0,.5)) drop-shadow(0 0 60px rgba(226,35,26,.22));
+}
+.hero-3d-img--clear:hover { transform: perspective(1600px) rotateY(-3deg) rotateX(1deg); }
+
+/* Hero image slider — smooth cross-fade with a gentle zoom */
+.hero-slider { position: relative; width: 100%; aspect-ratio: 1.45 / 1;
+  transform: perspective(1600px) rotateY(-9deg) rotateX(4deg) rotate(.5deg);
+  transition: transform .8s cubic-bezier(.22,.61,.36,1); }
+.hero-slider:hover { transform: perspective(1600px) rotateY(-3deg) rotateX(1deg); }
+.hero-slider img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+  opacity: 0; transform: scale(1.06); transform-origin: center;
+  transition: opacity 1.2s ease-in-out, transform 1.6s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform; }
+.hero-slider img:hover { transform: scale(1.06); }
+.hero-slider img.is-active,
+.hero-slider img.is-active:hover { opacity: 1; transform: scale(1); }
 @media (max-width: 960px) {
   body.home .hero__grid { grid-template-columns: 1fr; }
   .hero__float { max-width: 470px; }
   .hero__laptop-img { transform: perspective(1400px) rotateY(-9deg) rotateX(4deg) rotate(1deg); }
+  .hero-3d-img { transform: perspective(1100px) rotateY(-15deg) rotateX(7deg) rotate(1deg); }
 }
 
 /* About Digi8 — feature card */

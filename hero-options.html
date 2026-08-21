@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hero options — full section preview | Digi8</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=97" />
+  <style>
+    body { margin: 0; background: #0d0f14; }
+    .opt-note { position: sticky; top: 0; z-index: 20; background: #e2231a; color: #fff;
+      text-align: center; font-family: Inter, sans-serif; font-weight: 600; font-size: .92rem; padding: 9px 16px; }
+    .opt-bar { display: flex; align-items: center; gap: 12px; padding: 22px 40px 0; font-family: Inter, sans-serif; }
+    .opt-bar .num { width: 34px; height: 34px; border-radius: 50%; background: #e2231a; color: #fff;
+      display: grid; place-items: center; font-weight: 700; font-family: "Space Grotesk", sans-serif; }
+    .opt-bar .name { color: #fff; font-weight: 600; font-size: 1.05rem; }
+    .opt-bar .tag { margin-left: 10px; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+      color: #34d399; border: 1px solid rgba(52,211,153,.45); border-radius: 999px; padding: 3px 10px; }
+    /* Render each hero like the real page (no header, so give the grid breathing room) */
+    .preview .hero { border-top: 1px solid rgba(255,255,255,.06); }
+    .preview .hero__grid { padding-top: 30px; padding-bottom: 50px; }
+    .preview .hero__actions .btn { pointer-events: none; }
+    .missing { min-height: 300px; display: grid; place-items: center; color: #7b8291;
+      font-family: Inter, sans-serif; text-align: center; }
+    .missing code { color: #f0726b; }
+  </style>
+</head>
+<body class="preview">
+  <div class="opt-note">Full hero preview — each option shown exactly as it would appear on the home page. Tell me “use option N”.</div>
+
+  <!-- OPTION 1 -->
+  <div class="opt-bar"><span class="num">1</span><span class="name">Dashboards + glass core</span></div>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Creating Software That Makes a Difference</span>
+        <h1>From Concept to Code — <br><span style="color:#f0726b">We Build What Matters</span></h1>
+        <p class="hero__lead">We create intelligent software solutions that automate processes, simplify operations, and help businesses work more efficiently and confidently</p>
+        <div class="hero__actions">
+          <a class="btn btn-primary" href="#">Explore our products</a>
+          <a class="btn btn-ghost" href="#">Talk to our team →</a>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true"><div class="hero__float">
+        <img class="hero-3d-img hero-3d-img--clear" src="/assets/img/hero-opt1.png" alt="Option 1" onerror="this.parentNode.parentNode.innerHTML='<div class=missing>Save <code>hero-opt1.png</code></div>'">
+      </div></div>
+    </div>
+  </section>
+
+  <!-- OPTION 2 -->
+  <div class="opt-bar"><span class="num">2</span><span class="name">Glass cube + red core</span></div>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Creating Software That Makes a Difference</span>
+        <h1>From Concept to Code — <br><span style="color:#f0726b">We Build What Matters</span></h1>
+        <p class="hero__lead">We create intelligent software solutions that automate processes, simplify operations, and help businesses work more efficiently and confidently</p>
+        <div class="hero__actions">
+          <a class="btn btn-primary" href="#">Explore our products</a>
+          <a class="btn btn-ghost" href="#">Talk to our team →</a>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true"><div class="hero__float">
+        <img class="hero-3d-img hero-3d-img--clear" src="/assets/img/hero-opt2.png" alt="Option 2" onerror="this.parentNode.parentNode.innerHTML='<div class=missing>Save <code>hero-opt2.png</code></div>'">
+      </div></div>
+    </div>
+  </section>
+
+  <!-- OPTION 3 -->
+  <div class="opt-bar"><span class="num">3</span><span class="name">Pipeline / journey</span></div>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Creating Software That Makes a Difference</span>
+        <h1>From Concept to Code — <br><span style="color:#f0726b">We Build What Matters</span></h1>
+        <p class="hero__lead">We create intelligent software solutions that automate processes, simplify operations, and help businesses work more efficiently and confidently</p>
+        <div class="hero__actions">
+          <a class="btn btn-primary" href="#">Explore our products</a>
+          <a class="btn btn-ghost" href="#">Talk to our team →</a>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true"><div class="hero__float">
+        <img class="hero-3d-img hero-3d-img--clear" src="/assets/img/hero-opt3.png" alt="Option 3" onerror="this.parentNode.parentNode.innerHTML='<div class=missing>Save <code>hero-opt3.png</code></div>'">
+      </div></div>
+    </div>
+  </section>
+
+  <!-- OPTION 4 -->
+  <div class="opt-bar"><span class="num">4</span><span class="name">Cube hub + devices</span></div>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Creating Software That Makes a Difference</span>
+        <h1>From Concept to Code — <br><span style="color:#f0726b">We Build What Matters</span></h1>
+        <p class="hero__lead">We create intelligent software solutions that automate processes, simplify operations, and help businesses work more efficiently and confidently</p>
+        <div class="hero__actions">
+          <a class="btn btn-primary" href="#">Explore our products</a>
+          <a class="btn btn-ghost" href="#">Talk to our team →</a>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true"><div class="hero__float">
+        <img class="hero-3d-img hero-3d-img--clear" src="/assets/img/hero-opt4.png" alt="Option 4" onerror="this.parentNode.parentNode.innerHTML='<div class=missing>Save <code>hero-opt4.png</code></div>'">
+      </div></div>
+    </div>
+  </section>
+
+  <!-- OPTION 5 (current) -->
+  <div class="opt-bar"><span class="num">5</span><span class="name">Sphere + orbit</span><span class="tag">current</span></div>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">Creating Software That Makes a Difference</span>
+        <h1>From Concept to Code — <br><span style="color:#f0726b">We Build What Matters</span></h1>
+        <p class="hero__lead">We create intelligent software solutions that automate processes, simplify operations, and help businesses work more efficiently and confidently</p>
+        <div class="hero__actions">
+          <a class="btn btn-primary" href="#">Explore our products</a>
+          <a class="btn btn-ghost" href="#">Talk to our team →</a>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true"><div class="hero__float">
+        <img class="hero-3d-img hero-3d-img--clear" src="/assets/img/hero-3d-fit.png" alt="Option 5">
+      </div></div>
+    </div>
+  </section>
+
+</body>
+</html>
