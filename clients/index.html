@@ -5,11 +5,24 @@
   <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Our Clients — Digi8 | Trusted by leading organizations</title>
-  <meta name="description" content="Organizations that trust Digi8 to deliver compliance-grade software and digital transformation — Akhuwat, GO and SKANS School of Accountancy." />
+  <meta name="description" content="Organizations that trust Digi8 for compliance-grade software and digital transformation — Akhuwat, GO, SKANS School of Accountancy and Shorthajj Sirajia." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=96" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=100" />
+  <style>
+    /* Clients logo wall */
+    .client-wall { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .client-logo { background: #fff; border: 1px solid var(--line); border-radius: 18px; min-height: 180px;
+      display: grid; place-items: center; padding: 28px 22px; box-shadow: var(--shadow-sm);
+      transition: transform .22s ease, box-shadow .22s ease, border-color .2s ease; }
+    .client-logo:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(226,35,26,.35); }
+    .client-logo img { max-width: 100%; max-height: 96px; width: auto; object-fit: contain; }
+    .client-logo--name .client-name { font-family: "Space Grotesk", sans-serif; font-weight: 700;
+      font-size: 1.4rem; color: var(--ink-900); text-align: center; line-height: 1.15; }
+    @media (max-width: 860px) { .client-wall { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px) { .client-wall { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 
@@ -59,28 +72,11 @@
   <!-- Impact + clients -->
   <section class="section section--flush-top">
     <div class="container">
-      <div class="clients-grid clients-grid--3">
-        <article class="client-card reveal">
-          <div class="client-card__logo"><img src="/assets/img/clients/akhuwat.png" alt="Akhuwat" loading="lazy" /></div>
-          <span class="client-card__count">2 Projects</span>
-          <p>A long-standing partnership delivering IFRS 9 expected credit loss and provident fund systems for one of the world's largest interest-free microfinance organizations.</p>
-          <span class="client-card__label">Projects delivered</span>
-          <div class="client-tags"><span>ECL</span><span>Provident Fund</span></div>
-        </article>
-        <article class="client-card reveal">
-          <div class="client-card__logo"><img src="/assets/img/clients/go.png" alt="GO — Get going with GO" loading="lazy" /></div>
-          <span class="client-card__count">1 Project</span>
-          <p>Partnering with GO to automate and streamline their employee provident fund administration end to end.</p>
-          <span class="client-card__label">Projects delivered</span>
-          <div class="client-tags"><span>Provident Fund</span></div>
-        </article>
-        <article class="client-card reveal">
-          <div class="client-card__logo"><img src="/assets/img/clients/skans.jpeg" alt="SKANS School of Accountancy" loading="lazy" /></div>
-          <span class="client-card__count">1 Project</span>
-          <p>Streamlining provident fund administration for one of Pakistan's leading professional accountancy education institutes.</p>
-          <span class="client-card__label">Projects delivered</span>
-          <div class="client-tags"><span>Provident Fund</span></div>
-        </article>
+      <div class="client-wall">
+        <div class="client-logo reveal"><img src="/assets/img/clients/akhuwat.png" alt="Akhuwat" loading="lazy" /></div>
+        <div class="client-logo reveal"><img src="/assets/img/clients/go.png" alt="GO" loading="lazy" /></div>
+        <div class="client-logo reveal"><img src="/assets/img/clients/skans.jpeg" alt="SKANS School of Accountancy" loading="lazy" /></div>
+        <div class="client-logo reveal"><img src="/assets/img/clients/sirajia-hajj.png" alt="Sirajia Hajj &amp; Umrah" loading="lazy" /></div>
       </div>
     </div>
   </section>
