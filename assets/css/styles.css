@@ -152,6 +152,17 @@ body.home .hero__grid { grid-template-columns: 1.05fr .95fr; align-items: center
   .hero-slider:hover { transform: none; }
   .hero-slider img { object-position: center; }
 }
+
+/* Home "Our Products" — one product per line: logo + name */
+.product-mini-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 4px 0 0; }
+.product-mini { display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--line);
+  border-radius: 12px; padding: 13px 18px; box-shadow: var(--shadow-sm); text-decoration: none; color: inherit;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.product-mini:hover { transform: translateX(4px); box-shadow: var(--shadow-md, 0 14px 30px -18px rgba(0,0,0,.28)); border-color: rgba(226,35,26,.35); }
+.product-mini__ic { flex: 0 0 auto; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px;
+  background: var(--emerald-50); color: var(--emerald-600); margin: 0; }
+.product-mini__ic svg { width: 21px; height: 21px; }
+.product-mini b { color: var(--ink-900); font-size: 1.02rem; margin: 0; line-height: 1.2; }
 @media (max-width: 960px) {
   body.home .hero__grid { grid-template-columns: 1fr; }
   .hero__float { max-width: 470px; }
@@ -179,7 +190,9 @@ body.home .hero__grid { grid-template-columns: 1.05fr .95fr; align-items: center
 }
 .about-card > * { position: relative; z-index: 1; }
 /* Core-strength icon chips */
-.strength-chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+.strength-chips { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+@media (max-width: 720px) { .strength-chips { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .strength-chips { grid-template-columns: 1fr; } }
 .strength-chip {
   display: inline-flex; align-items: center; gap: 10px;
   background: #fff; border: 1px solid var(--line); border-radius: 12px;
@@ -732,6 +745,9 @@ body.home .hero { margin-top: calc(-1 * var(--header-h)); }
 .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
   outline: none; border-color: var(--emerald-500); box-shadow: 0 0 0 3px rgba(226,35,26,.15);
 }
+/* Placeholder fades lighter when the field is focused */
+.form-field input::placeholder, .form-field textarea::placeholder { color: var(--ink-400, #9aa0ac); transition: color .2s ease; }
+.form-field input:focus::placeholder, .form-field textarea:focus::placeholder { color: #cdd2db; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
 /* ----- Footer ----- */
