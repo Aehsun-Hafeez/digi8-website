@@ -709,7 +709,25 @@ body.home .hero { margin-top: calc(-1 * var(--header-h)); }
 .team-card--link:hover .team-card__more { opacity: 1; }
 
 /* Leadership spotlight */
-.spotlight-photo img { width: 100%; max-height: 480px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow-lg); display: block; }
+.spotlight-photo img { width: 100%; max-width: 340px; max-height: 380px; object-fit: cover; object-position: center;
+  border-radius: var(--radius); box-shadow: var(--shadow-lg); display: block; margin: 0 auto; }
+
+/* Leadership spotlight — two columns: compact profile aside + bio fills the rest */
+.spotlight.split { grid-template-columns: 300px 1fr; align-items: start; }
+.spotlight__avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+  object-position: center 42%; border: 3px solid #fff; display: block; margin-bottom: 18px;
+  box-shadow: var(--shadow-md, 0 14px 30px -18px rgba(0,0,0,.3)); }
+.spotlight__aside h2 { margin: 6px 0 4px; }
+.spotlight__bio p { margin: 0 0 14px; }
+.spotlight__bio p:last-child { margin-bottom: 0; }
+@media (max-width: 760px) { .spotlight.split { grid-template-columns: 1fr; } }
+
+/* Compact capability cards (About page "About Digi8" grid) */
+.caps-grid { max-width: 940px; margin: 0 auto; gap: 14px; }
+.caps-grid .card { display: flex; align-items: center; gap: 14px; padding: 16px 18px; }
+.caps-grid .card__icon { width: 40px; height: 40px; margin: 0; flex: 0 0 auto; }
+.caps-grid .card__icon svg { width: 20px; height: 20px; }
+.caps-grid .card h3 { margin: 0; font-size: 1rem; line-height: 1.25; }
 .role-line { color: var(--emerald-700); font-weight: 600; margin-bottom: 18px; }
 .role-line span { color: var(--ink-400); font-weight: 500; }
 .spotlight-tags { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 22px; }
