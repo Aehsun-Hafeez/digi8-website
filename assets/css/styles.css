@@ -742,8 +742,25 @@ body.home .hero { margin-top: calc(-1 * var(--header-h)); }
   background: var(--emerald-50); color: var(--emerald-600); transition: background .2s ease, color .2s ease; }
 .leader-card__link:hover { background: var(--emerald-500); color: #fff; }
 .leader-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 940px; margin: 0 auto; align-items: stretch; }
-.leader-grid .leader-card { max-width: none; margin: 0; }
+.leader-grid .leader-card { max-width: none; margin: 0; padding: 32px 30px; }
 @media (max-width: 720px) { .leader-grid { grid-template-columns: 1fr; } }
+/* Read more link inside leader cards */
+.leader-card__more { margin: 4px 0 16px; color: var(--emerald-600); font-weight: 600; font-size: .92rem; text-decoration: none; }
+.leader-card__more:hover { text-decoration: underline; }
+
+/* Leader profile page */
+.leader-profile { display: grid; grid-template-columns: 260px 1fr; gap: 44px; align-items: start; max-width: 940px; margin: 0 auto; }
+.leader-profile__photo { width: 100%; max-width: 260px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; box-shadow: var(--shadow-lg); }
+.leader-profile__body h1 { margin: 0 0 6px; }
+.leader-profile__role { color: var(--emerald-600); font-weight: 700; margin: 0 0 20px; }
+.leader-profile__body p { color: var(--ink-600, #4b5563); margin: 0 0 14px; line-height: 1.7; }
+.leader-profile__actions { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
+.leader-profile__back { color: var(--ink-500, #6b7280); text-decoration: none; font-weight: 600; }
+.leader-profile__back:hover { color: var(--emerald-600); }
+@media (max-width: 720px) {
+  .leader-profile { grid-template-columns: 1fr; gap: 24px; justify-items: center; text-align: center; }
+  .leader-profile__actions { justify-content: center; }
+}
 /* Technology Expertise labels on one line */
 .expertise-grid .stat-tile span { font-size: .82rem; white-space: nowrap; }
 
