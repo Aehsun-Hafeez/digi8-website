@@ -739,13 +739,18 @@ body.home .hero { margin-top: calc(-1 * var(--header-h)); }
 .leader-card__role { color: var(--emerald-600); font-weight: 700; margin: 0 0 16px; }
 .leader-card__bio { color: var(--ink-600, #4b5563); margin: 0 0 12px; }
 .leader-card__link { margin-top: auto; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
-  background: var(--emerald-50); color: var(--emerald-600); transition: background .2s ease, color .2s ease; }
-.leader-card__link:hover { background: var(--emerald-500); color: #fff; }
+  background: #0a66c2; color: #fff; transition: background .2s ease, color .2s ease; }
+.leader-card__link:hover { background: #004182; color: #fff; }
 .leader-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 940px; margin: 0 auto; align-items: stretch; }
 .leader-grid .leader-card { max-width: none; margin: 0; padding: 32px 30px; }
 @media (max-width: 720px) { .leader-grid { grid-template-columns: 1fr; } }
+/* Footer row (Read more + LinkedIn) inside leader cards */
+.leader-card__foot { margin-top: auto; padding-top: 18px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.leader-card__foot .leader-card__link { margin-top: 0; width: 36px; height: 36px; }
+.leader-card__foot .leader-card__link svg { width: 16px; height: 16px; }
+
 /* Read more link inside leader cards */
-.leader-card__more { margin: 4px 0 16px; color: var(--emerald-600); font-weight: 600; font-size: .92rem; text-decoration: none; }
+.leader-card__more { margin: 0; color: var(--emerald-600); font-weight: 600; font-size: .92rem; text-decoration: none; }
 .leader-card__more:hover { text-decoration: underline; }
 
 /* Leader profile page */
