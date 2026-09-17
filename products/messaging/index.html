@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Messaging System for Schools | Digi8</title>
+  <meta name="description" content="Digi8 Messaging System for Schools: a centralized communication platform to broadcast announcements, automate alerts and manage two-way conversations with staff and parents across SMS, WhatsApp and in-app channels." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=96" />
+  <style>
+    /* Capability cards */
+    .cap-card { position: relative; padding-top: 34px; }
+    .cap-num { position: absolute; top: 26px; right: 28px; font-size: 1.4rem; font-weight: 800; color: var(--emerald-50); letter-spacing: -.02em; }
+    .cap-card .k { font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--emerald-600); display: block; margin-bottom: 10px; }
+
+    /* Operational-workflow card */
+    .workflow-card { position: relative; overflow: hidden; background: linear-gradient(180deg, #ffffff 0%, #fbfbfc 100%);
+      border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow-lg); padding: 46px 46px 42px; }
+    .workflow-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--emerald-500), #f0726b); }
+    .workflow-card::after { content: ""; position: absolute; right: -80px; top: -80px; width: 260px; height: 260px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(226,35,26,.06), transparent 70%); pointer-events: none; }
+    .workflow-card__head { position: relative; max-width: 780px; }
+    .workflow-card__head h2 { margin: 10px 0 14px; }
+    .workflow-card__head p { color: var(--ink-600, #4b5563); margin: 0; }
+    .workflow-grid { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 34px; }
+    .workflow-item { display: flex; gap: 15px; align-items: flex-start; background: #fff; border: 1px solid var(--line);
+      border-radius: 16px; padding: 22px; box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease; }
+    .workflow-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md, 0 14px 30px -18px rgba(0,0,0,.28)); }
+    .workflow-item__ic { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center;
+      background: var(--emerald-500); color: #fff; box-shadow: 0 8px 18px -8px rgba(226,35,26,.6); }
+    .workflow-item__ic svg { width: 20px; height: 20px; }
+    .workflow-item b { display: block; font-size: 1.02rem; color: var(--ink-900); margin-bottom: 5px; }
+    .workflow-item p { margin: 0; font-size: .9rem; color: var(--ink-600, #4b5563); line-height: 1.55; }
+    @media (max-width: 820px) {
+      .workflow-card { padding: 32px 22px 28px; border-radius: 20px; }
+      .workflow-grid { grid-template-columns: 1fr; gap: 14px; }
+    }
+
+    /* Tinted detail card */
+    .pf-detail-card { margin-top: 44px; background: linear-gradient(160deg, var(--emerald-50), #fff);
+      border: 1px solid var(--line); border-radius: 24px; box-shadow: var(--shadow-lg); padding: 42px 46px; }
+    .pf-detail-card__head { text-align: center; max-width: 720px; margin: 0 auto 30px; }
+    .pf-detail-card__head h2 { margin: 8px 0 0; }
+    @media (max-width: 820px) { .pf-detail-card { padding: 28px 20px; } }
+
+    /* Title inside the overview flow card */
+    .pf-cycle-head { margin-bottom: 6px; }
+    .pf-cycle-head .eyebrow { display: block; margin-bottom: 6px; }
+    .pf-cycle-head b { display: block; font-family: var(--font-head, "Space Grotesk", sans-serif); font-size: 1.15rem; color: var(--ink-900); line-height: 1.2; }
+
+    /* Governance / feature card grid */
+    .gov-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; }
+    .gov-grid .card { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+
+    /* Hero message preview */
+    .msg-preview { display: flex; flex-direction: column; gap: 12px; }
+    .msg-bubble { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; box-shadow: var(--shadow-sm); max-width: 88%; }
+    .msg-bubble--out { align-self: flex-end; background: var(--emerald-500); color: #fff; border-color: transparent; }
+    .msg-bubble__meta { display: flex; align-items: center; gap: 8px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; opacity: .8; }
+    .msg-bubble p { margin: 0; font-size: .95rem; line-height: 1.5; }
+    .msg-bubble__tick { margin-left: auto; font-size: .7rem; opacity: .9; }
+    .msg-chan { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; background: var(--emerald-50); color: var(--emerald-600); }
+    .msg-bubble--out .msg-chan { background: rgba(255,255,255,.2); color: #fff; }
+  </style>
+</head>
+<body class="home">
+
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__social" style="margin-left:auto">
+        <a href="https://www.facebook.com/p/Digi8-61577698963574/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 320 512" fill="currentColor"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg></a>
+        <a href="https://pk.linkedin.com/company/digi8-private-limited" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 448 512" fill="currentColor"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+        <a href="https://www.instagram.com/digi8.tech" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 448 512" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="/index.html" aria-label="Digi8 home">
+        <img class="brand__mark" src="/assets/img/digi8-binary.svg" alt="" width="66" height="40" />
+        <span class="brand__name"><span class="brand-shine">digi8</span><small>Go Digital. Better!</small></span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <a href="/index.html">Home</a>
+        <a href="/products/index.html" class="is-active" aria-current="page">Products</a>
+        <a href="/about/index.html">About Us</a>
+        <a href="/clients/index.html">Our Clients</a>
+        <a href="/contact/index.html">Contact</a>
+      </nav>
+      <div class="header-cta">
+        <a class="btn btn-primary btn-portal" href="/odoo/#odoo-form-section"><span class="btn-shine">Client Portal</span></a>
+        <button class="nav-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle menu"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <span class="eyebrow">School Communication System</span>
+        <h1>Every message delivered. Every parent reached.</h1>
+        <p class="hero__lead">A centralized communication platform for schools — broadcast announcements, automate alerts, and manage two-way conversations with staff and parents across SMS, WhatsApp and in-app channels.</p>
+        <div class="hero__actions">
+          <a class="btn btn-primary" href="#capabilities">Explore capabilities ↓</a>
+          <a class="btn btn-ghost" href="/contact/index.html">Talk to our team →</a>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__float">
+          <div class="msg-preview">
+            <div class="msg-bubble">
+              <div class="msg-bubble__meta"><span class="msg-chan"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14z"/></svg></span> School → All Parents</div>
+              <p>Reminder: Parent-teacher meeting this Friday at 10:00 AM.</p>
+            </div>
+            <div class="msg-bubble">
+              <div class="msg-bubble__meta"><span class="msg-chan"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/></svg></span> Attendance Alert · Grade 6</div>
+              <p>Ahmed was marked absent today. Tap to view details.</p>
+            </div>
+            <div class="msg-bubble msg-bubble--out">
+              <div class="msg-bubble__meta"><span class="msg-chan"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.9c0 2.1.55 4.06 1.6 5.82L2 22l4.42-1.16a9.9 9.9 0 0 0 5.62 1.74h.01c5.46 0 9.9-4.45 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span> Parent reply · WhatsApp <span class="msg-bubble__tick">✓✓</span></div>
+              <p>Thank you, we'll be there.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section class="section">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Overview</span>
+        <h2>One platform for every school conversation</h2>
+        <p class="lead">From a single broadcast to thousands of parents to a one-to-one chat with a teacher — organised, tracked and reliable.</p>
+        <p>Digi8's Messaging System replaces scattered SMS blasts, WhatsApp groups and paper circulars with one governed platform. Schools send announcements, trigger automated alerts, and hold two-way conversations with staff and parents — with delivery tracked from send to read.</p>
+        <ul class="check-list">
+          <li>Broadcast announcements to a class, a group or the whole school</li>
+          <li>Automated alerts for attendance, fees, results and events</li>
+          <li>Two-way messaging between staff and parents</li>
+          <li>Delivery tracking, message templates and scheduled sends</li>
+        </ul>
+      </div>
+      <div class="split__media reveal" aria-hidden="true">
+        <div class="pf-cycle-head">
+          <span class="eyebrow">At a glance</span>
+          <b>The message flow</b>
+        </div>
+        <div class="metric-row"><span class="dot">1</span><div><b>Compose</b><small>Write a message or pick a template</small></div></div>
+        <div class="metric-row"><span class="dot">2</span><div><b>Target</b><small>Choose a class, group or the whole school</small></div></div>
+        <div class="metric-row"><span class="dot">3</span><div><b>Send</b><small>Across SMS, WhatsApp &amp; in-app</small></div></div>
+        <div class="metric-row"><span class="dot">4</span><div><b>Track</b><small>Delivered &amp; read status per message</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capabilities -->
+  <section class="section section--soft" id="capabilities">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Eight core functions</span>
+        <h2>Everything your school needs to communicate</h2>
+        <p>Each function is configurable to your school's structure and integrated end to end.</p>
+      </div>
+
+      <div class="grid grid-4">
+        <article class="card cap-card reveal">
+          <span class="cap-num">01</span>
+          <span class="k">Broadcast</span>
+          <h3>Announcements</h3>
+          <p>Send announcements to a class, a group or the whole school in one click.</p>
+        </article>
+        <article class="card cap-card reveal">
+          <span class="cap-num">02</span>
+          <span class="k">Alerts</span>
+          <h3>Automated Alerts</h3>
+          <p>Trigger alerts for attendance, fees, results and events automatically.</p>
+        </article>
+        <article class="card cap-card reveal">
+          <span class="cap-num">03</span>
+          <span class="k">Conversations</span>
+          <h3>Two-Way Messaging</h3>
+          <p>Let staff and parents reply and chat, with every thread tracked.</p>
+        </article>
+        <article class="card cap-card reveal">
+          <span class="cap-num">04</span>
+          <span class="k">Channels</span>
+          <h3>Multi-Channel Delivery</h3>
+          <p>Reach parents over SMS, WhatsApp and the in-app inbox from one place.</p>
+        </article>
+        <article class="card cap-card reveal">
+          <span class="cap-num">05</span>
+          <span class="k">Compose</span>
+          <h3>Templates &amp; Scheduling</h3>
+          <p>Reusable message templates with scheduled and recurring sends.</p>
+        </article>
+        <article class="card cap-card reveal">
+          <span class="cap-num">06</span>
+          <span class="k">Insights</span>
+          <h3>Delivery Tracking</h3>
+          <p>See sent, delivered and read status for every message you send.</p>
+        </article>
+        <article class="card cap-card reveal">
+          <span class="cap-num">07</span>
+          <span class="k">Audiences</span>
+          <h3>Groups &amp; Segmentation</h3>
+          <p>Target by class, section, role or custom groups you define.</p>
+        </article>
+        <article class="card cap-card reveal">
+          <span class="cap-num">08</span>
+          <span class="k">Access</span>
+          <h3>Parent Portal</h3>
+          <p>A simple parent app and portal for messages, notices and history.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Built for schools -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Governance</span>
+        <h2>Built for Schools</h2>
+      </div>
+      <div class="grid gov-grid">
+        <div class="card reveal" style="text-align:center;">
+          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3 style="font-size:1.02rem; margin:0;">Role-based access for admins, teachers &amp; staff</h3>
+        </div>
+        <div class="card reveal" style="text-align:center;">
+          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h3 style="font-size:1.02rem; margin:0;">Message approval workflow</h3>
+        </div>
+        <div class="card reveal" style="text-align:center;">
+          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div>
+          <h3 style="font-size:1.02rem; margin:0;">Full delivery &amp; read tracking</h3>
+        </div>
+        <div class="card reveal" style="text-align:center;">
+          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3 style="font-size:1.02rem; margin:0;">Student &amp; parent data privacy</h3>
+        </div>
+        <div class="card reveal" style="text-align:center;">
+          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div>
+          <h3 style="font-size:1.02rem; margin:0;">Supports multiple campuses &amp; classes</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="workflow-card reveal">
+        <div class="workflow-card__head">
+          <span class="eyebrow">How it works</span>
+          <h2>From school event to parent's phone — automatically</h2>
+          <p>The platform connects to your school data so attendance, fee and result events trigger the right message to the right people — sent across SMS, WhatsApp and the app, with replies routed back to staff and every message tracked.</p>
+        </div>
+        <div class="workflow-grid">
+          <div class="workflow-item">
+            <span class="workflow-item__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 3-3 3 2 4-5"/></svg></span>
+            <div><b>Connected to school data</b><p>Attendance, fees, results and events flow in from your school system.</p></div>
+          </div>
+          <div class="workflow-item">
+            <span class="workflow-item__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+            <div><b>Automated triggers</b><p>Rules turn each event into the right message to the right audience.</p></div>
+          </div>
+          <div class="workflow-item">
+            <span class="workflow-item__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <div><b>Two-way &amp; tracked</b><p>Parents reply on their channel of choice; every thread is logged.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Why Digi8 Messaging</span>
+        <h2>Reliable communication, effortlessly</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Reliable</h3>
+          <p>Every message is tracked from send to delivery and read.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.17L4 17.17z"/><path d="M8 9h8M8 13h5"/></svg></div>
+          <h3>Multi-Channel</h3>
+          <p>SMS, WhatsApp and in-app messaging, unified in one place.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3>Effortless</h3>
+          <p>Simple dashboards staff can use with no training required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2>Bring your school online</h2>
+        <p>See how Digi8 keeps schools, staff and parents connected across SMS, WhatsApp and in-app — announcements, alerts and two-way messaging on one platform.</p>
+        <div class="btn-row">
+          <a class="btn btn-light" href="/contact/index.html">Request a Demo</a>
+          <a class="btn btn-outline-light" href="/products/index.html">Back to Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="/index.html"><img class="brand__mark" src="/assets/img/digi8-binary.svg" alt="" width="66" height="40" /><span class="brand__name"><span class="brand-shine">digi8</span><small>Go Digital. Better!</small></span></a>
+          <p style="margin-top:16px">From concept to code — Transforming Business Through Technology</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/p/Digi8-61577698963574/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 320 512" fill="currentColor"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg></a>
+            <a href="https://pk.linkedin.com/company/digi8-private-limited" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 448 512" fill="currentColor"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+            <a href="https://www.instagram.com/digi8.tech" target="_blank" rel="noopener" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 448 512" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/products/index.html">Products</a></li>
+            <li><a href="/about/index.html">About Us</a></li>
+            <li><a href="/clients/index.html">Our Clients</a></li>
+            <li><a href="/contact/index.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="/products/index.html#ecl">ECL</a></li>
+            <li><a href="/products/pf/index.html">Provident Fund</a></li>
+            <li><a href="https://www.regs.green" target="_blank" rel="noopener">Regs Green</a></li>
+            <li><a href="/products/messaging/index.html">Messaging System</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get in touch</h4>
+          <ul>
+            <li><a href="mailto:connect@digi8.tech">connect@digi8.tech</a></li>
+            <!-- <li><a href="https://wa.me/923214639297" target="_blank" rel="noopener">+92 321 4639297</a></li> -->
+            <li>415, Block B Faisal Town,<br>Lahore, Pakistan</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Digi8 (Private) Limited. All rights reserved.</span>
+        <span>Technology | Agility | Intelligence</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  <script>
+    (function () {
+      var h = document.querySelector(".site-header");
+      if (!h) return;
+      var toggle = function () { h.classList.toggle("is-scrolled", window.scrollY > 8); };
+      toggle();
+      window.addEventListener("scroll", toggle, { passive: true });
+    })();
+  </script>
+  <!-- WhatsApp floating button -->
+  <span class="wa-fab" role="img" aria-label="WhatsApp" title="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.9c0 2.1.55 4.06 1.6 5.82L2 22l4.42-1.16a9.9 9.9 0 0 0 5.62 1.74h.01c5.46 0 9.9-4.45 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.06c-.25.7-1.44 1.33-2 1.42-.53.08-1.2.11-1.94-.12-.45-.14-1.02-.33-1.76-.65-3.1-1.34-5.12-4.46-5.28-4.67-.15-.2-1.26-1.67-1.26-3.19 0-1.52.8-2.27 1.08-2.58.28-.31.61-.39.82-.39.2 0 .41 0 .59.01.19.01.44-.07.69.53.25.6.86 2.1.94 2.25.08.15.13.33.03.53-.1.2-.15.33-.3.5-.15.18-.31.4-.45.53-.15.15-.3.31-.13.6.17.3.76 1.25 1.63 2.02 1.12 1 2.07 1.31 2.36 1.46.3.15.47.13.64-.08.17-.2.74-.86.94-1.16.2-.3.4-.25.67-.15.27.1 1.72.81 2.01.96.3.15.5.22.57.35.07.12.07.72-.18 1.42z"/></svg>
+  </span>
+</body>
+</html>
