@@ -42,6 +42,39 @@
       .workflow-card { padding: 32px 22px 28px; border-radius: 20px; }
       .workflow-grid { grid-template-columns: 1fr; gap: 14px; }
     }
+    /* How-it-works: shorter cards + icon chip with step number badge */
+    #how .workflow-card { padding: 30px 30px 26px; }
+    #how .workflow-grid { gap: 14px; margin-top: 24px; }
+    #how .workflow-item { padding: 18px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    #how .workflow-item b { white-space: nowrap; font-size: 1rem; }
+    #how .workflow-item__ic { position: relative; }
+    #how .wf-num { position: absolute; top: -7px; right: -7px; width: 19px; height: 19px; border-radius: 50%; background: var(--ink-900); color: #fff; font-size: .6rem; font-weight: 700; display: grid; place-items: center; border: 2px solid #fff; }
+    #how .workflow-item p { line-height: 1.5; }
+
+    /* Pricing table */
+    .table-wrap { overflow-x: auto; }
+    .price-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); min-width: 640px; }
+    .price-table thead th { background: var(--ink-900); color: #fff; text-align: left; font-size: .82rem; letter-spacing: .03em; padding: 14px 18px; font-weight: 700; }
+    .price-table td { padding: 16px 18px; border-top: 1px solid var(--line); color: var(--ink-700, #374151); font-size: .92rem; line-height: 1.5; vertical-align: top; }
+    .price-table td:first-child { font-weight: 600; color: var(--ink-900); }
+    .price-note { color: var(--ink-500, #6b7280); font-size: .85rem; margin-top: 16px; line-height: 1.6; }
+
+    /* FAQ accordion */
+    .faq { max-width: 900px; }
+    .faq details { border-bottom: 1px solid var(--line); }
+    .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 4px; font-weight: 600; color: var(--ink-900); font-size: 1rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; color: var(--emerald-500); font-size: 1.5rem; font-weight: 400; line-height: 1; flex: none; }
+    .faq details[open] summary::after { content: "\2212"; }
+    .faq details p { margin: 0 4px 20px; color: var(--ink-600, #4b5563); line-height: 1.6; max-width: 760px; }
+
+    /* Full-width CTA band */
+    .cta-fw { background: var(--emerald-500); color: #fff; }
+    .cta-fw__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 26px; padding-bottom: 26px; }
+    .cta-fw h2 { color: #fff; margin: 0 0 6px; }
+    .cta-fw p { color: rgba(255,255,255,.9); margin: 0; }
+    .cta-fw .btn-light { flex: none; }
+    @media (max-width: 640px) { .cta-fw__inner { flex-direction: column; align-items: flex-start; } }
 
     /* Tinted detail card */
     .pf-detail-card { margin-top: 44px; background: linear-gradient(160deg, var(--emerald-50), #fff);
@@ -59,15 +92,31 @@
     .gov-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 18px; }
     .gov-grid .card { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
 
-    /* Hero message preview */
-    .msg-preview { display: flex; flex-direction: column; gap: 12px; }
-    .msg-bubble { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; box-shadow: var(--shadow-sm); max-width: 88%; }
-    .msg-bubble--out { align-self: flex-end; background: var(--emerald-500); color: #fff; border-color: transparent; }
-    .msg-bubble__meta { display: flex; align-items: center; gap: 8px; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 6px; opacity: .8; }
-    .msg-bubble p { margin: 0; font-size: .95rem; line-height: 1.5; }
-    .msg-bubble__tick { margin-left: auto; font-size: .7rem; opacity: .9; }
-    .msg-chan { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 6px; background: var(--emerald-50); color: var(--emerald-600); }
-    .msg-bubble--out .msg-chan { background: rgba(255,255,255,.2); color: #fff; }
+    /* Hero meta row */
+    .hero-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 30px; margin-top: 32px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.15); max-width: 520px; }
+    .hero-meta b { display: block; color: #ffffff; font-size: 1.05rem; margin-bottom: 3px; }
+    .hero-meta span { color: #b7bec9; font-size: .85rem; }
+
+    /* Audience pills */
+    .audience-pills { display: flex; flex-wrap: wrap; gap: 14px; }
+    .audience-pills span { background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 12px 22px; font-weight: 600; color: var(--ink-900); box-shadow: var(--shadow-sm); transition: transform .18s ease, box-shadow .2s ease, border-color .2s ease; }
+    .audience-pills span:hover { transform: translateY(-2px); border-color: var(--emerald-500); box-shadow: var(--shadow-md, 0 12px 26px -16px rgba(0,0,0,.3)); }
+
+    /* WhatsApp phone mockup */
+    .wa-phone { max-width: 340px; margin: 0 auto; background: #0b141a; border-radius: 34px; padding: 9px; box-shadow: var(--shadow-lg); }
+    .wa-phone__bar { display: flex; align-items: center; gap: 10px; background: #1f8a4c; color: #fff; padding: 12px 14px; border-radius: 26px 26px 0 0; }
+    .wa-phone__avatar { width: 34px; height: 34px; border-radius: 50%; background: #fff; color: #1f8a4c; font-weight: 700; display: grid; place-items: center; flex: none; }
+    .wa-phone__bar b { display: block; font-size: .95rem; line-height: 1.15; }
+    .wa-phone__bar small { font-size: .72rem; opacity: .85; }
+    .wa-chat { background: #e5ddd5; padding: 14px 12px 18px; border-radius: 0 0 26px 26px; display: flex; flex-direction: column; gap: 9px; }
+    .wa-day { align-self: center; background: #fff; color: #54656f; font-size: .68rem; font-weight: 600; padding: 3px 10px; border-radius: 8px; box-shadow: 0 1px 1px rgba(0,0,0,.08); }
+    .wa-msg { max-width: 84%; padding: 7px 9px 5px; border-radius: 10px; font-size: .84rem; line-height: 1.4; box-shadow: 0 1px 1px rgba(0,0,0,.1); }
+    .wa-msg p { margin: 0; color: #111b21; }
+    .wa-msg--school { align-self: flex-end; background: #d9fdd3; border-top-right-radius: 2px; }
+    .wa-msg--parent { align-self: flex-start; background: #fff; border-top-left-radius: 2px; }
+    .wa-time { display: block; text-align: right; font-size: .6rem; color: #667781; margin-top: 3px; }
+    .wa-file { display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,.05); border-radius: 8px; padding: 8px; margin-top: 6px; font-size: .78rem; color: #111b21; }
+    .wa-file__ic { background: #e2231a; color: #fff; font-size: .58rem; font-weight: 700; padding: 3px 5px; border-radius: 4px; flex: none; }
   </style>
 </head>
 <body class="home">
@@ -105,29 +154,48 @@
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__copy">
-        <span class="eyebrow">School Communication System</span>
-        <h1>Every message delivered. Every parent reached.</h1>
-        <p class="hero__lead">A centralized communication platform for schools — broadcast announcements, automate alerts, and manage two-way conversations with staff and parents across SMS, WhatsApp and in-app channels.</p>
+        <h1>Messaging System for Schools</h1>
+        <p class="hero__lead">Send result cards, fee vouchers and alerts to parents on WhatsApp, and let parents ask for them on the same number. Excel or ERP in, branded PDFs out, replies answered automatically.</p>
         <div class="hero__actions">
-          <a class="btn btn-primary" href="#capabilities">Explore capabilities ↓</a>
-          <a class="btn btn-ghost" href="/contact/index.html">Talk to our team →</a>
+          <a class="btn btn-primary" href="/contact/index.html">Request a Demo</a>
+          <a class="btn btn-ghost" href="#how">See How It Works</a>
+        </div>
+        <div class="hero-meta">
+          <div><b>Official API</b><span>Built on Meta WhatsApp Cloud API</span></div>
+          <div><b>Two-Way</b><span>Parents ask, the system answers</span></div>
+          <div><b>Urdu + English</b><span>Templates approved in both languages</span></div>
         </div>
       </div>
 
       <div class="hero__visual" aria-hidden="true">
-        <div class="hero__float">
-          <div class="msg-preview">
-            <div class="msg-bubble">
-              <div class="msg-bubble__meta"><span class="msg-chan"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14z"/></svg></span> School → All Parents</div>
-              <p>Reminder: Parent-teacher meeting this Friday at 10:00 AM.</p>
+        <div class="wa-phone">
+          <div class="wa-phone__bar">
+            <span class="wa-phone__avatar">S</span>
+            <div><b>The School</b><small>Official account</small></div>
+          </div>
+          <div class="wa-chat">
+            <div class="wa-day">Today</div>
+            <div class="wa-msg wa-msg--school">
+              <p>Dear Parent, the Mid-Term result for Ayesha Khan (Grade 6-B) is attached.</p>
+              <div class="wa-file"><span class="wa-file__ic">PDF</span> Result_Card_Ayesha_Khan.pdf</div>
+              <span class="wa-time">9:02 AM</span>
             </div>
-            <div class="msg-bubble">
-              <div class="msg-bubble__meta"><span class="msg-chan"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/></svg></span> Attendance Alert · Grade 6</div>
-              <p>Ahmed was marked absent today. Tap to view details.</p>
+            <div class="wa-msg wa-msg--parent">
+              <p>Thank you. Can I get the fee voucher for October?</p>
+              <span class="wa-time">9:10 AM</span>
             </div>
-            <div class="msg-bubble msg-bubble--out">
-              <div class="msg-bubble__meta"><span class="msg-chan"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.9c0 2.1.55 4.06 1.6 5.82L2 22l4.42-1.16a9.9 9.9 0 0 0 5.62 1.74h.01c5.46 0 9.9-4.45 9.9-9.9 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2z"/></svg></span> Parent reply · WhatsApp <span class="msg-bubble__tick">✓✓</span></div>
-              <p>Thank you, we'll be there.</p>
+            <div class="wa-msg wa-msg--school">
+              <p>Here is the fee voucher for October 2026. Due date: 10 Oct.</p>
+              <div class="wa-file"><span class="wa-file__ic">PDF</span> Fee_Voucher_Oct_2026.pdf</div>
+              <span class="wa-time">9:10 AM</span>
+            </div>
+            <div class="wa-msg wa-msg--parent">
+              <p>Attendance this month?</p>
+              <span class="wa-time">9:11 AM</span>
+            </div>
+            <div class="wa-msg wa-msg--school">
+              <p>Ayesha was present 18 of 19 school days in September. Absent on 8 Sep.</p>
+              <span class="wa-time">9:11 AM</span>
             </div>
           </div>
         </div>
@@ -163,121 +231,90 @@
     </div>
   </section>
 
-  <!-- Capabilities -->
-  <section class="section section--soft" id="capabilities">
+  <!-- Who it is for -->
+  <section class="section section--soft">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Eight core functions</span>
-        <h2>Everything your school needs to communicate</h2>
-        <p>Each function is configurable to your school's structure and integrated end to end.</p>
+      <div class="reveal" style="max-width:640px; margin-bottom:26px;">
+        <h2>Who It Is For</h2>
+        <p style="color:var(--ink-500,#6b7280); margin-top:10px;">Any campus that today prints result cards, photocopies fee vouchers or fields the same parent questions on the front-desk phone.</p>
       </div>
-
-      <div class="grid grid-4">
-        <article class="card cap-card reveal">
-          <span class="cap-num">01</span>
-          <span class="k">Broadcast</span>
-          <h3>Announcements</h3>
-          <p>Send announcements to a class, a group or the whole school in one click.</p>
-        </article>
-        <article class="card cap-card reveal">
-          <span class="cap-num">02</span>
-          <span class="k">Alerts</span>
-          <h3>Automated Alerts</h3>
-          <p>Trigger alerts for attendance, fees, results and events automatically.</p>
-        </article>
-        <article class="card cap-card reveal">
-          <span class="cap-num">03</span>
-          <span class="k">Conversations</span>
-          <h3>Two-Way Messaging</h3>
-          <p>Let staff and parents reply and chat, with every thread tracked.</p>
-        </article>
-        <article class="card cap-card reveal">
-          <span class="cap-num">04</span>
-          <span class="k">Channels</span>
-          <h3>Multi-Channel Delivery</h3>
-          <p>Reach parents over SMS, WhatsApp and the in-app inbox from one place.</p>
-        </article>
-        <article class="card cap-card reveal">
-          <span class="cap-num">05</span>
-          <span class="k">Compose</span>
-          <h3>Templates &amp; Scheduling</h3>
-          <p>Reusable message templates with scheduled and recurring sends.</p>
-        </article>
-        <article class="card cap-card reveal">
-          <span class="cap-num">06</span>
-          <span class="k">Insights</span>
-          <h3>Delivery Tracking</h3>
-          <p>See sent, delivered and read status for every message you send.</p>
-        </article>
-        <article class="card cap-card reveal">
-          <span class="cap-num">07</span>
-          <span class="k">Audiences</span>
-          <h3>Groups &amp; Segmentation</h3>
-          <p>Target by class, section, role or custom groups you define.</p>
-        </article>
-        <article class="card cap-card reveal">
-          <span class="cap-num">08</span>
-          <span class="k">Access</span>
-          <h3>Parent Portal</h3>
-          <p>A simple parent app and portal for messages, notices and history.</p>
-        </article>
+      <div class="audience-pills reveal">
+        <span>Private School Groups</span>
+        <span>Single-Campus Schools</span>
+        <span>Colleges and Academies</span>
+        <span>Tuition Centres</span>
+        <span>School Management Offices</span>
       </div>
     </div>
   </section>
 
-  <!-- Built for schools -->
-  <section class="section">
+  <!-- Key features -->
+  <section class="section" id="capabilities">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Governance</span>
-        <h2>Built for Schools</h2>
+      <div class="reveal" style="max-width:640px; margin-bottom:34px;">
+        <h2>Key Features</h2>
+        <p style="color:var(--ink-500,#6b7280); margin-top:10px;">One WhatsApp number for everything the school sends to parents and everything parents ask back.</p>
       </div>
-      <div class="grid gov-grid">
-        <div class="card reveal" style="text-align:center;">
-          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <h3 style="font-size:1.02rem; margin:0;">Role-based access for admins, teachers &amp; staff</h3>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></div>
+          <h3>Result Card Delivery</h3>
+          <p>Upload marks from Excel or pull from the school ERP. Each student receives a branded PDF result card, with separate templates for parents and students.</p>
         </div>
-        <div class="card reveal" style="text-align:center;">
-          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-          <h3 style="font-size:1.02rem; margin:0;">Message approval workflow</h3>
+        <div class="card reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+          <h3>Fee Voucher Push</h3>
+          <p>Monthly fee vouchers go out automatically with the due date. Reminders follow before the due date and after it for unpaid accounts.</p>
         </div>
-        <div class="card reveal" style="text-align:center;">
-          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div>
-          <h3 style="font-size:1.02rem; margin:0;">Full delivery &amp; read tracking</h3>
+        <div class="card reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Two-Way Parent Queries</h3>
+          <p>Parents reply on the same number to request a result, a fee voucher or an attendance summary. The system verifies the parent and answers within seconds.</p>
         </div>
-        <div class="card reveal" style="text-align:center;">
-          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-          <h3 style="font-size:1.02rem; margin:0;">Student &amp; parent data privacy</h3>
+        <div class="card reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></div>
+          <h3>Attendance and Performance Alerts</h3>
+          <p>Same-day absence notices, low-attendance warnings and low-score alerts, sent to parents from rules the school configures.</p>
         </div>
-        <div class="card reveal" style="text-align:center;">
-          <div class="card__icon" style="margin:0 auto 14px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div>
-          <h3 style="font-size:1.02rem; margin:0;">Supports multiple campuses &amp; classes</h3>
+        <div class="card reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h12M3 18h15"/></svg></div>
+          <h3>Circulars and Announcements</h3>
+          <p>Holiday notices, exam schedules, PTM invitations and event circulars sent to a whole campus, a grade or a single section.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg></div>
+          <h3>Delivery Dashboard</h3>
+          <p>Sent, delivered, read and failed counts per campaign, with a list of invalid or unreachable numbers for the office to correct.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- How it works -->
-  <section class="section section--soft">
+  <section class="section section--soft" id="how">
     <div class="container">
       <div class="workflow-card reveal">
         <div class="workflow-card__head">
           <span class="eyebrow">How it works</span>
-          <h2>From school event to parent's phone — automatically</h2>
-          <p>The platform connects to your school data so attendance, fee and result events trigger the right message to the right people — sent across SMS, WhatsApp and the app, with replies routed back to staff and every message tracked.</p>
+          <p>No app for parents to install. Everything runs on the WhatsApp they already use.</p>
         </div>
-        <div class="workflow-grid">
+        <div class="workflow-grid" style="grid-template-columns:repeat(4,1fr)">
           <div class="workflow-item">
-            <span class="workflow-item__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 3-3 3 2 4-5"/></svg></span>
-            <div><b>Connected to school data</b><p>Attendance, fees, results and events flow in from your school system.</p></div>
+            <span class="workflow-item__ic"><span class="wf-num">1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5-5 5 5"/><path d="M12 5v12"/></svg></span>
+            <div><b>Upload or Sync Data</b><p>The school uploads marks, fees or attendance in Excel, or the system reads them directly from the ERP or student information system.</p></div>
           </div>
           <div class="workflow-item">
-            <span class="workflow-item__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
-            <div><b>Automated triggers</b><p>Rules turn each event into the right message to the right audience.</p></div>
+            <span class="workflow-item__ic"><span class="wf-num">2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+            <div><b>Generate PDFs</b><p>Result cards and fee vouchers are generated on the school letterhead from approved templates, one per student.</p></div>
           </div>
           <div class="workflow-item">
-            <span class="workflow-item__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-            <div><b>Two-way &amp; tracked</b><p>Parents reply on their channel of choice; every thread is logged.</p></div>
+            <span class="workflow-item__ic"><span class="wf-num">3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></span>
+            <div><b>Send on WhatsApp</b><p>Messages go out on the school's official WhatsApp Business number through Meta's Cloud API, with delivery tracking.</p></div>
+          </div>
+          <div class="workflow-item">
+            <span class="workflow-item__ic"><span class="wf-num">4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            <div><b>Answer Parent Replies</b><p>Parent replies are matched to the student record and answered automatically. Anything the system cannot answer is routed to the school office.</p></div>
           </div>
         </div>
       </div>
@@ -311,17 +348,124 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section section--tight">
+  <!-- Integration & Security -->
+  <section class="section section--soft">
     <div class="container">
-      <div class="cta-band reveal">
-        <h2>Bring your school online</h2>
-        <p>See how Digi8 keeps schools, staff and parents connected across SMS, WhatsApp and in-app — announcements, alerts and two-way messaging on one platform.</p>
-        <div class="btn-row">
-          <a class="btn btn-light" href="/contact/index.html">Request a Demo</a>
-          <a class="btn btn-outline-light" href="/products/index.html">Back to Products</a>
+      <div class="grid grid-2" style="gap:48px; align-items:start;">
+        <div class="reveal">
+          <h2>Integration and Setup</h2>
+          <p style="color:var(--ink-500,#6b7280); margin:10px 0 22px;">The system fits around the school's existing records. Setup on an existing number takes days, not months.</p>
+          <ul class="check-list">
+            <li>Runs on the school's own WhatsApp Business number, verified with Meta</li>
+            <li>Excel upload for schools without an ERP; direct integration for schools that have one</li>
+            <li>Student, parent and section data imported once and kept in sync</li>
+            <li>Templates submitted to Meta for approval in English and Urdu as part of onboarding</li>
+            <li>Existing WhatsApp Business App on the same number can continue for manual chat</li>
+            <li>Hosted by Digi8 or deployed on the school's own infrastructure</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <h2>Security and Control</h2>
+          <p style="color:var(--ink-500,#6b7280); margin:10px 0 22px;">Student data stays under the school's control, and every message is traceable.</p>
+          <ul class="check-list">
+            <li>Parent identity verified against the registered mobile number before any record is shared</li>
+            <li>Role-based access for administrators, accounts staff and campus coordinators</li>
+            <li>Full message log per student, exportable for audit</li>
+            <li>Opt-out handling built in, as required by WhatsApp policy</li>
+            <li>Data hosted in a region the school selects</li>
+          </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Pricing model -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="reveal" style="max-width:640px; margin-bottom:30px;">
+        <h2>Pricing Model</h2>
+        <p style="color:var(--ink-500,#6b7280); margin-top:10px;">A flat platform fee per campus plus WhatsApp messaging at Meta's published rates, billed at cost.</p>
+      </div>
+      <div class="table-wrap reveal">
+        <table class="price-table">
+          <thead>
+            <tr><th>Component</th><th>Basis</th><th>Includes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Platform Subscription</td>
+              <td>Per campus, per year</td>
+              <td>Software licence, hosting, template management, dashboard, support</td>
+            </tr>
+            <tr>
+              <td>Onboarding</td>
+              <td>One-time</td>
+              <td>Number setup and Meta verification, data import, template design and approval, staff training</td>
+            </tr>
+            <tr>
+              <td>WhatsApp Messaging</td>
+              <td>Per message, at Meta rates</td>
+              <td>Utility templates for results, vouchers and alerts; parent-initiated conversations</td>
+            </tr>
+            <tr>
+              <td>ERP Integration</td>
+              <td>Optional, one-time</td>
+              <td>Connector to the school's ERP or student information system</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="price-note reveal">Indicative messaging cost for a 1,000-student campus is a few rupees per student per month, covering one result push per exam cycle and a monthly fee voucher. Final figures are provided in the proposal.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:22px;">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>Do parents need to install an app?</summary>
+          <p>No. Everything runs on the WhatsApp parents already use — there is no app to download and no account to create.</p>
+        </details>
+        <details>
+          <summary>Can the school keep using its existing WhatsApp number?</summary>
+          <p>Yes. The system runs on the school's own WhatsApp Business number, verified with Meta, and the existing WhatsApp Business App on that number can continue to be used for manual chat.</p>
+        </details>
+        <details>
+          <summary>Which languages are supported?</summary>
+          <p>Templates are submitted to Meta for approval in both English and Urdu as part of onboarding. Additional languages can be added on request.</p>
+        </details>
+        <details>
+          <summary>Is it limited to results and fee vouchers?</summary>
+          <p>No. It also sends attendance and performance alerts, circulars, exam schedules, PTM invitations and event notices, and it answers parent queries — all from the same number.</p>
+        </details>
+        <details>
+          <summary>What happens if a parent asks something the system cannot answer?</summary>
+          <p>The message is routed to the school office so a staff member can reply. Nothing is lost, and every thread stays logged against the student record.</p>
+        </details>
+        <details>
+          <summary>What data does the school need to provide?</summary>
+          <p>Student, parent and section data — uploaded once from Excel or integrated directly from the school's ERP or student information system, then kept in sync. Marks, fees and attendance flow in each cycle.</p>
+        </details>
+        <details>
+          <summary>Can this be deployed on the school's own servers?</summary>
+          <p>Yes. It can be hosted by Digi8 or deployed on the school's own infrastructure, with data hosted in a region the school selects.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-fw reveal">
+    <div class="container cta-fw__inner">
+      <div>
+        <h2>Request a Demo</h2>
+        <p>See a live result push and parent query on your own number in a 30-minute session.</p>
+      </div>
+      <a class="btn btn-light" href="/contact/index.html">Book a Demo</a>
     </div>
   </section>
 
